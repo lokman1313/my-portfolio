@@ -24,12 +24,12 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="space-y-8"
         >
-          <p className="text-2xl md:text-3xl text-violet-400 font-medium italic leading-snug">
+          <p className="text-xl md:text-2xl text-violet-400 font-semibold leading-snug">
             "Solving complex problems with simple, elegant code."
           </p>
           
           <div className="space-y-6">
-            <p className="text-gray-400 text-lg md:text-xl leading-relaxed">
+            <p className="text-gray-400 text-md md:text-lg leading-relaxed">
               I am a <span className="text-white font-semibold">Full Stack Developer</span> specialized in building high-performance web applications. My journey started with a curiosity for how things work on the internet, which evolved into a career of crafting digital experiences using <span className="text-white border-b border-violet-500/50">React, Next.js, and Node.js</span>.
             </p>
 

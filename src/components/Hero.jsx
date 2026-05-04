@@ -1,8 +1,10 @@
 'use client'
-
+import logo from "../../public/lokman hossen portfolio.png"
 import { motion } from 'framer-motion'
 import { FiArrowUpRight } from 'react-icons/fi'
 import { HiOutlineArchive } from 'react-icons/hi';
+import AnimatedText from './AnimatedText';
+import Image from "next/image";
 
 export default function Hero() {
   // Smooth Scroll Function
@@ -36,11 +38,12 @@ export default function Hero() {
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-full blur opacity-30 group-hover:opacity-60 transition duration-1000 animate-pulse"></div>
             
-            <div className="relative w-64 h-64 md:w-80 md:h-80 bg-gray-900 border-2 border-white/10 rounded-full overflow-hidden p-2">
-              <img 
-                src="/your-image.jpg" 
+            <div className="relative w-64 h-64 md:w-80 md:h-80 border-2 border-white/10 rounded-full overflow-hidden p-2">
+              <Image 
+                src={logo} 
                 alt="Profile"
-                className="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-700"
+                width={500}
+                className="w-full h-full object-cover rounded-full transition-all duration-700"
               />
             </div>
             
@@ -70,9 +73,10 @@ export default function Hero() {
               Lokman Hossen<span className="text-violet-500">.</span>
             </h1>
             
-            <h2 className="text-gray-500 text-xl md:text-2xl mt-4 font-medium italic">
+            {/* <h2 className="text-gray-500 text-xl md:text-2xl mt-4 font-medium italic">
               MARN Stack Developer & UI Designer
-            </h2>
+            </h2> */}
+            <AnimatedText></AnimatedText>
 
             <p className="text-gray-400 mt-6 max-w-lg text-lg leading-relaxed mx-auto md:mx-0">
               Crafting high-performance web experiences through clean code and intuitive design systems.

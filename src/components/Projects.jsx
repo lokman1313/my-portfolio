@@ -1,50 +1,63 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { FiExternalLink, FiGithub, FiArrowRight } from 'react-icons/fi'
+import tile from "../../public/tiles_gallery_thumbnail.svg"
+import dragon from "../../public/dragon_news_thumbnail.svg"
+import cricket from "../../public/cricket_dream11_epic_thumbnail.svg"
+import keenkeper from "../../public/keenkepper.png"
+import digi from "../../public/digitool.png"
+import book from "../../public/book.png"
 
 const projects = [
   {
-    title: "Gadget Heaven",
-    desc: "A premium tech e-commerce platform featuring dynamic category filtering and cart management.",
-    tags: ["React", "Tailwind", "Context API"],
+    title: "Tiles Gallary",
+    desc: "A premium tech e-commerce platform featuring high-speed dynamic category filtering and a seamless cart management system.",
+    tags: [ "Tailwind","Vercel","Next.js","DaisyUi","MongoDB"],
     link: "https://assignment-08-orpin.vercel.app/",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop"
+    gitlink :"https://github.com/lokman1313/assignment-08",
+    image: tile
   },
   {
     title: "Global News Portal",
-    desc: "A high-performance news application with real-time data fetching and breaking news alerts.",
-    tags: ["Next.js", "Vercel", "API Integration"],
+    desc: "A high-speed news platform featuring real-time data synchronization and instantaneous breaking news notifications for a seamless user experience.",
+    tags: ["Next.js", "Vercel", "API Integration","HeroUI"],
     link: "https://news-paper-7u7x.vercel.app/",
-    image: "https://images.unsplash.com/photo-1504711432869-efd597cdd042?q=80&w=800&auto=format&fit=crop"
+    gitlink :"https://github.com/lokman1313/Next-js-Authenticetion/tree/main",
+    image: dragon
   },
   {
-    title: "Modern UI Showcase",
-    desc: "Interactive product landing page with smooth Framer Motion animations and glassmorphic design.",
-    tags: ["React", "Framer Motion", "Netlify"],
+    title: "Cricket Player Choosing",
+    desc: "An interactive landing page featuring sleek Framer Motion animations and a modern glassmorphic interface for a premium user experience.",
+    tags: ["React", "Context API", "Netlify","DaisyUI"],
     link: "https://fluffy-nougat-4007a9.netlify.app/",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
+    gitlink :"https://github.com/lokman1313/modul-35",
+    image: cricket
   },
   {
-    title: "Creative Portfolio Hub",
-    desc: "Minimalist web application focusing on typography and whitespace for a premium user experience.",
+    title: "KeenKeeper",
+    desc: "A minimalist web app utilizing strategic whitespace and elegant typography to deliver a sophisticated travel experience.",
     tags: ["JavaScript", "CSS3", "Responsive"],
-    link: "https://deft-truffle-2fa711.netlify.app/",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop"
+    link: "https://assignment-07-nu.vercel.app/",
+    gitlink :"https://github.com/lokman1313/assignment-07/tree/main",
+    image: keenkeper
   },
   {
-    title: "Interactive Dashboard",
-    desc: "Data-driven dashboard with real-time charts and user interaction monitoring.",
+    title: "Digi Tools",
+    desc: "A high-performance, data-driven dashboard featuring real-time analytics and advanced user interaction monitoring.",
     tags: ["React", "Charts.js", "Netlify"],
     link: "https://guileless-paletas-f3a9c8.netlify.app/",
-    image: "https://images.unsplash.com/photo-1551288049-bbbda536339a?q=80&w=800&auto=format&fit=crop"
+    gitlink :"https://github.com/lokman1313/Assignment-06",
+    image: digi
   },
   {
-    title: "Service Platform",
-    desc: "A functional service-based web app built with a focus on speed and performance.",
+    title: "Book Reading",
+    desc: "Book Reading: A high-performance, service-oriented web app designed for a seamless reading experience.",
     tags: ["HTML", "Tailwind", "JS"],
     link: "https://joyful-scone-bd5149.netlify.app/",
-    image: "https://images.unsplash.com/photo-1454165833767-02a698d5874c?q=80&w=800&auto=format&fit=crop"
+    gitlink :"https://github.com/lokman1313/Book-Reading",
+    image: book
   }
 ]
 
@@ -84,7 +97,7 @@ export default function Projects() {
             >
               {/* Image Section */}
               <div className="relative aspect-video overflow-hidden">
-                <img 
+                <Image 
                   src={project.image} 
                   alt={project.title}
                   className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
@@ -122,9 +135,10 @@ export default function Projects() {
                    <a href={project.link} target="_blank" className="text-white/40 hover:text-white transition-colors">
                      <FiExternalLink size={18} />
                    </a>
-                   <button className="text-white/40 hover:text-white transition-colors">
+                   <a href={project.gitlink} target="_blank" className="text-white/40 hover:text-white transition-colors">
                      <FiGithub size={18} />
-                   </button>
+                   </a>
+                   
                 </div>
               </div>
             </motion.div>
