@@ -36,7 +36,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <ul className="flex flex-wrap justify-center gap-6 text-xs uppercase tracking-[0.2em] font-bold text-gray-400">
-            {['hero', 'about', 'skills', 'projects', 'contact'].map((item) => (
+            {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
               <li key={item}>
                 <button 
                   onClick={() => scrollTo(item)}

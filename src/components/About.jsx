@@ -25,7 +25,7 @@ export default function About() {
           className="space-y-8"
         >
           <p className="text-xl md:text-2xl text-violet-400 font-semibold leading-snug">
-            "Solving complex problems with simple, elegant code."
+            Solving complex problems with simple, elegant code.
           </p>
           
           <div className="space-y-6">
