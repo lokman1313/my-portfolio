@@ -70,9 +70,7 @@ export default function Navbar() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-50"></div>
             <span className="relative text-white font-black text-xl tracking-tighter">LH</span>
           </div>
-          <span className="hidden sm:block text-xl font-black text-white tracking-tighter uppercase group-hover:text-violet-500 transition-colors">
-            Lokman<span className="text-violet-500">.</span>
-          </span>
+          
         </motion.div>
 
         {/* Desktop Menu */}
