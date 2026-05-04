@@ -2,6 +2,7 @@
 import emailjs from '@emailjs/browser'
 import { motion } from 'framer-motion'
 import { FiMail, FiMapPin, FiSend, FiGithub, FiLinkedin, FiFacebook } from 'react-icons/fi'
+import { toast } from 'react-toastify'
 
 export default function Contact() {
   const handleSubmit = (e) => {
@@ -14,10 +15,10 @@ export default function Contact() {
   process.env.NEXT_PUBLIC_PUBLIC_KEY
 )
   .then(() => {
-    alert("Email sent সফলভাবে 🚀")
+    toast.success("I will get in touch with you very soon.")
   })
   .catch(() => {
-    alert("Send fail 😐")
+    toast.error("Send fail 😐")
   })
 
   e.target.reset()

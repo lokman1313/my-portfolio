@@ -61,17 +61,27 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         
         {/* Professional LH Logo Badge */}
-        <motion.div 
-          whileHover={{ scale: 1.05 }}
-          className="flex items-center gap-3 cursor-pointer group"
-          onClick={() => scrollTo('hero')}
-        >
-          <div className="relative w-10 h-10 flex items-center justify-center bg-violet-600 rounded-xl overflow-hidden shadow-lg shadow-violet-900/40">
-            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-50"></div>
-            <span className="relative text-white font-black text-xl tracking-tighter">LH</span>
-          </div>
-          
-        </motion.div>
+<motion.div 
+  className="flex items-center gap-3 cursor-pointer"
+  onClick={() => scrollTo('hero')}
+>
+  <div className="relative flex items-center justify-center">
+
+    {/* Glow background */}
+    <div className="absolute w-12 h-12 bg-violet-600/30 blur-2xl rounded-full"></div>
+
+    {/* Circle badge */}
+    <div className="w-10 h-10 rounded-full border border-violet-500/40 bg-black/40 backdrop-blur-md flex items-center justify-center shadow-lg shadow-violet-700/20">
+
+      {/* Logo text (center fixed) */}
+      <span className="text-white font-bold text-xl tracking-tighter leading-none -translate-y-[1px]">
+        {"{L}"}
+      </span>
+
+    </div>
+
+  </div>
+</motion.div>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-10">

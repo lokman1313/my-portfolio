@@ -69,7 +69,6 @@ export default function Hero() {
               <span className="w-8 h-[1px] bg-violet-400"></span>
               I Build Fast & Modern Web Apps.
             </p>
-
             <h1 className="text-white text-5xl md:text-7xl font-black leading-tight tracking-tighter">
               Lokman Hossen<span className="text-violet-500">.</span>
             </h1>
