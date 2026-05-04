@@ -43,6 +43,7 @@ export default function Hero() {
                 src={logo} 
                 alt="Profile"
                 width={500}
+                height={500}
                 className="w-full h-full object-cover rounded-full transition-all duration-700"
               />
             </div>
@@ -66,7 +67,7 @@ export default function Hero() {
           >
             <p className="justify-center md:justify-start text-violet-400 uppercase tracking-[0.3em] text-[10px] font-bold mb-6 flex items-center gap-2">
               <span className="w-8 h-[1px] bg-violet-400"></span>
-              Available for Work
+              I Build Fast & Modern Web Apps.
             </p>
 
             <h1 className="text-white text-5xl md:text-7xl font-black leading-tight tracking-tighter">
@@ -75,7 +76,7 @@ export default function Hero() {
             
             {/* <h2 className="text-gray-500 text-xl md:text-2xl mt-4 font-medium italic">
               MARN Stack Developer & UI Designer
-            </h2> */}
+              </h2> */}
             <AnimatedText></AnimatedText>
 
             <p className="text-gray-400 mt-6 max-w-lg text-lg leading-relaxed mx-auto md:mx-0">
