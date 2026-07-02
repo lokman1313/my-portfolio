@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
+import { Providers } from "./providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -14,13 +15,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col text-white font-inter">
+    <html lang="en"
+    suppressHydrationWarning
+    className={`${inter.variable} h-full antialiased`}>
+      <body className="bg-background text-foreground font-inter">
 
         
           <main className="relative z-10 flex-1">
+            <Providers>
           <ToastContainer />
           {children}
+          </Providers>
         </main>
         
 

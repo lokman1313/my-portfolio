@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { HiMenuAlt3, HiX } from 'react-icons/hi' 
-import { FaCircle } from 'react-icons/fa'
+import { HiMenuAlt3, HiX } from 'react-icons/hi'
+import { ThemeSwitch } from './ThemeSwitch'
+import { Separator } from '@heroui/react'
 
 const links = [
   { name: 'Home', id: 'hero' },
@@ -34,6 +35,7 @@ export default function Navbar() {
       }
     }
     window.addEventListener('scroll', handleScroll)
+    handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -51,114 +53,120 @@ export default function Navbar() {
   }
 
   return (
-    <nav 
+    <nav
       className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
-        scrolled 
-          ? 'bg-black/60 backdrop-blur-xl py-4 border-b border-white/5' 
-          : 'bg-transparent py-7'
+        scrolled
+          ? 'bg-white/70 dark:bg-black/60 backdrop-blur-xl py-3 border-b border-gray-200/50 dark:border-white/5 shadow-sm dark:shadow-none'
+          : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
-        
-        {/* Professional LH Logo Badge */}
-<motion.div 
-  className="flex items-center gap-3 cursor-pointer"
-  onClick={() => scrollTo('hero')}
->
-  <div className="relative flex items-center justify-center">
 
-    {/* Glow background */}
-    <div className="absolute w-12 h-12 bg-violet-600/30 blur-2xl rounded-full"></div>
-
-    {/* Circle badge */}
-    <div className="w-10 h-10 rounded-full border border-violet-500/40 bg-black/40 backdrop-blur-md flex items-center justify-center shadow-lg shadow-violet-700/20">
-
-      {/* Logo text (center fixed) */}
-      <span className="text-white font-bold text-xl tracking-tighter leading-none -translate-y-[1px]">
-        {"{L}"}
-      </span>
-
-    </div>
-
-  </div>
-</motion.div>
-
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-10">
-          {links.map((link) => (
-            <li key={link.id} className="relative group">
-              <button
-                onClick={() => scrollTo(link.id)}
-                className={`text-[12px] font-bold tracking-[0.2em] transition-all duration-300 uppercase ${
-                  active === link.id ? 'text-white' : 'text-gray-500 hover:text-gray-200'
-                }`}
-              >
-                {link.name}
-              </button>
-              {active === link.id && (
-                <motion.span 
-                  layoutId="nav-underline"
-                  className="absolute -bottom-2 left-0 w-full h-[2px] bg-violet-600"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
-              )}
-            </li>
-          ))}
-        </ul>
-
-        {/* Mobile Toggle Button */}
-        <button
-          className="md:hidden text-white z-[110] p-2 hover:bg-white/5 rounded-full transition-all"
-          onClick={() => setOpen(!open)}
+        {/* Logo Badge (KnowledgeHub-style wordmark) */}
+        <motion.div
+          className="flex items-center gap-3 cursor-pointer"
+          onClick={() => scrollTo('hero')}
         >
-          {open ? <HiX size={28} /> : <HiMenuAlt3 size={28} />}
-        </button>
+          <div className="relative flex items-center justify-center">
+            <div className="absolute w-12 h-12 bg-violet-600/30 blur-2xl rounded-full" />
+            <div className="w-10 h-10 rounded-full border border-violet-500/40 bg-white/40 dark:bg-black/40 backdrop-blur-md flex items-center justify-center shadow-lg shadow-violet-700/10 dark:shadow-violet-700/20">
+              <span className="text-gray-900 dark:text-white font-bold text-xl tracking-tighter leading-none -translate-y-[1px]">
+                {"{L}"}
+              </span>
+            </div>
+          </div>
+          <p className="hidden sm:block font-bold text-lg tracking-tight text-gray-950 dark:text-white">
+            Lokman<span className="text-violet-600 dark:text-violet-500">Hossen</span>
+          </p>
+        </motion.div>
+
+        {/* Desktop Menu — pill container */}
+        <div className="flex items-center gap-3">
+          <ul className="hidden md:flex items-center gap-1 bg-gray-100/80 dark:bg-white/5 backdrop-blur-md p-1.5 px-2 rounded-full border border-gray-200/50 dark:border-white/10 shadow-inner dark:shadow-none">
+            {links.map((link) => {
+              const isActive = active === link.id
+              return (
+                <li key={link.id} className="relative">
+                  <button
+                    onClick={() => scrollTo(link.id)}
+                    className={`relative px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.15em] uppercase transition-colors duration-200 ${
+                      isActive ? 'text-white' : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-200'
+                    }`}
+                  >
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-pill"
+                        className="absolute inset-0 bg-violet-600 rounded-full shadow-md shadow-violet-600/20"
+                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                      />
+                    )}
+                    <span className="relative z-10">{link.name}</span>
+                  </button>
+                </li>
+              )
+            })}
+          </ul>
+       <Separator className='hidden sm:flex my-2' orientation="vertical" />
+          {/* Theme Toggle + Mobile Button */}
+          <div className="flex items-center gap-2">
+            <ThemeSwitch />
+            <button
+              className="md:hidden text-gray-800 dark:text-white z-[110] p-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-full transition-all"
+              onClick={() => setOpen(!open)}
+              aria-label="Toggle menu"
+              aria-expanded={open}
+            >
+              {open ? <HiX size={26} /> : <HiMenuAlt3 size={26} />}
+            </button>
+          </div>
+        </div>
       </div>
 
-      {/* Mobile Menu Sidebar (Right Side - 1/4 or 3/4 on mobile) */}
+      {/* Mobile Menu Sidebar */}
       <AnimatePresence>
         {open && (
           <>
-            {/* Dark Overlay with Blur */}
-            <motion.div 
+            {/* Overlay */}
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setOpen(false)}
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[100] md:hidden"
+              className="fixed inset-0 bg-black/20 dark:bg-black/40 backdrop-blur-sm z-[100] md:hidden"
             />
-            
-            {/* Sidebar Drawer */}
+
+            {/* Sidebar Container */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 w-[75%] md:w-[350px] h-screen bg-gray-950/90 backdrop-blur-2xl z-[105] border-l border-white/5 flex flex-col p-10 md:hidden"
+              className="fixed top-0 right-0 w-[75%] md:w-[350px] h-screen bg-white/95 dark:bg-gray-950/90 backdrop-blur-2xl z-[105] border-l border-gray-200 dark:border-white/5 flex flex-col p-8 md:hidden"
             >
-              <div className="mt-16 space-y-8 text-right">
-                {links.map((link, i) => (
-                  <motion.button
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 * i }}
-                    key={link.id}
-                    onClick={() => scrollTo(link.id)}
-                    className={`block w-full text-2xl font-black uppercase tracking-tight transition-all ${
-                      active === link.id ? 'text-violet-500' : 'text-zinc-600 hover:text-white'
-                    }`}
-                  >
-                    <div className="flex items-center justify-end gap-4">
-                       {link.name}
-                       {active === link.id && <FaCircle size={8} className="text-violet-500" />}
-                    </div>
-                  </motion.button>
-                ))}
+              <div className="mt-16 space-y-2">
+                {links.map((link, i) => {
+                  const isActive = active === link.id
+                  return (
+                    <motion.button
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.06 * i }}
+                      key={link.id}
+                      onClick={() => scrollTo(link.id)}
+                      className={`flex items-center justify-between w-full py-3 px-4 rounded-xl text-sm font-bold uppercase tracking-wide transition-colors ${
+                        isActive
+                          ? 'bg-violet-600/10 dark:bg-violet-600/20 text-violet-600 dark:text-violet-400 border border-violet-500/20 dark:border-violet-500/30'
+                          : 'text-gray-500 dark:text-zinc-500 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white'
+                      }`}
+                    >
+                      {link.name}
+                    </motion.button>
+                  )
+                })}
               </div>
 
-              {/* Social or Quick Footer in Sidebar */}
-              <div className="mt-auto pt-10 border-t border-white/5">
-                <p className="text-zinc-500 text-[10px] uppercase tracking-widest text-right">
+              <div className="mt-auto pt-8 border-t border-gray-200 dark:border-white/5">
+                <p className="text-gray-400 dark:text-zinc-500 text-[10px] uppercase tracking-widest">
                   © 2026 Lokman Hossen
                 </p>
               </div>
