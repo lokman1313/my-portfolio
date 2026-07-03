@@ -1,56 +1,58 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { Chip, Button, Tooltip } from '@heroui/react'
-import { FiExternalLink, FiGithub, FiArrowRight } from 'react-icons/fi'
-import tile from '../../public/tiles-gallary.png'
-import knowledge from '../../public/knowledge-hub.png'
-import idea from '../../public/idea.png'
-import Link from 'next/link'
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { Chip, Button, Tooltip } from "@heroui/react";
+import { FiExternalLink, FiGithub, FiArrowRight } from "react-icons/fi";
+import tile from "../../public/tiles-gallary.png";
+import knowledge from "../../public/knowledge-hub.png";
+import idea from "../../public/idea.png";
+import Link from "next/link";
 
 const projects = [
   {
-    title: 'Tiles Gallery',
-    desc: 'A responsive tile-browsing platform with instant search, protected routes, and secure BetterAuth authentication.',
-    tags: ['Next.js', 'Tailwind CSS', 'DaisyUI', 'BetterAuth', 'MongoDB'],
-    link: 'https://assignment-08-orpin.vercel.app/',
-    gitlink: 'https://github.com/lokman1313/assignment-08',
+    title: "Tiles Gallery",
+    desc: "A responsive tile-browsing platform with instant search, protected routes, and secure BetterAuth authentication.",
+    tags: ["Next.js", "Tailwind CSS", "DaisyUI", "BetterAuth", "MongoDB"],
+    link: "https://assignment-08-orpin.vercel.app/",
+    gitlink: "https://github.com/lokman1313/assignment-08",
     image: tile,
   },
   {
-    title: 'IdeaVault',
-    desc: 'A startup idea-sharing community with JWT-protected routes, live comments, category filters, and a trending feed.',
-    tags: ['Next.js', 'React', 'Tailwind CSS', 'HeroUI', 'Framer Motion'],
-    link: 'https://idea-vault-vert.vercel.app/',
-    gitlink: 'https://github.com/lokman1313/Idea-Vault',
+    title: "IdeaVault",
+    desc: "A startup idea-sharing community with JWT-protected routes, live comments, category filters, and a trending feed.",
+    tags: ["Next.js", "React", "Tailwind CSS", "HeroUI", "Framer Motion"],
+    link: "https://idea-vault-vert.vercel.app/",
+    gitlink: "https://github.com/lokman1313/Idea-Vault",
     image: idea,
   },
   {
-    title: 'Knowledge Hub',
-    desc: 'A full-stack book delivery platform with Stripe payments, role-based dashboards, and real-time analytics.',
-    tags: ['Next.js 15', 'Express.js', 'MongoDB', 'Stripe', 'HeroUI'],
-    link: 'https://knowledge-hub-navy.vercel.app/',
-    gitlink: 'https://github.com/lokman1313/Knowledge-Hub',
+    title: "Knowledge Hub",
+    desc: "A full-stack book delivery platform with Stripe payments, role-based dashboards, and real-time analytics.",
+    tags: ["Next.js 15", "Express.js", "MongoDB", "Stripe", "HeroUI"],
+    link: "https://knowledge-hub-navy.vercel.app/",
+    gitlink: "https://github.com/lokman1313/Knowledge-Hub",
     image: knowledge,
     featured: true,
   },
-]
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.12, duration: 0.5, ease: 'easeOut' },
+    transition: { delay: i * 0.12, duration: 0.5, ease: "easeOut" },
   }),
-}
+};
 
 export default function Projects() {
   return (
     // Thêm relative và overflow-hidden vào đây để chứa 2 đốm sáng tuyệt đối (absolute)
-    <section id="projects" className="relative py-24 bg-white dark:bg-gray-950 text-foreground px-6 overflow-hidden transition-colors duration-500">
-      
+    <section
+      id="projects"
+      className="relative py-24 bg-white dark:bg-gray-950 text-foreground px-6 overflow-hidden transition-colors duration-500"
+    >
       {/* Ambient background glow (Góc trên bên phải) */}
       <div className="pointer-events-none absolute -top-32 -right-32 w-[28rem] h-[28rem] bg-fuchsia-400/5 dark:bg-fuchsia-700/10 blur-[120px] rounded-full transition-colors duration-500" />
 
@@ -74,11 +76,9 @@ export default function Projects() {
           </div>
 
           <Link
-            
             href="https://github.com/lokman1313?tab=repositories"
             target="_blank"
             className="p-2 rounded-full px-4 border-violet-500/40 text-violet-600 dark:text-violet-400 font-bold uppercase text-xs tracking-widest hover:bg-violet-500/10 flex justify-center items-center"
-           
           >
             <span>View All Projects</span> <FiArrowRight />
           </Link>
@@ -92,9 +92,17 @@ export default function Projects() {
               custom={index}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: '-80px' }}
+              viewport={{ once: true, margin: "-80px" }}
               variants={fadeUp}
-              className="group relative flex flex-col bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/5 rounded-3xl overflow-hidden hover:border-violet-500/30 dark:hover:border-violet-500/30 transition-all duration-500 shadow-lg dark:shadow-xl focus-within:ring-2 focus-within:ring-violet-500"
+              className="group relative flex flex-col rounded-3xl overflow-hidden border transition-all duration-500
+    bg-gradient-to-b from-white via-white to-violet-50/40
+    dark:from-zinc-900 dark:via-zinc-900 dark:to-violet-950/30
+    border-zinc-200/70 dark:border-white/10
+    shadow-md shadow-zinc-200/50 dark:shadow-black/30
+    backdrop-blur-sm
+    hover:border-violet-500/40 dark:hover:border-violet-500/40
+    hover:shadow-xl hover:shadow-violet-500/10 dark:hover:shadow-violet-500/10
+    focus-within:ring-2 focus-within:ring-violet-500"
             >
               {project.featured && (
                 <span className="absolute top-4 left-4 z-10 text-[9px] font-bold tracking-widest uppercase text-white bg-violet-600 px-2.5 py-1 rounded-full">
@@ -176,5 +184,5 @@ export default function Projects() {
         </div>
       </div>
     </section>
-  )
+  );
 }
