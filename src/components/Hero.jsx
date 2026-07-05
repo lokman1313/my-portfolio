@@ -1,43 +1,50 @@
-'use client'
-import logo from "../../public/lokman hossen portfolio.png"
-import { motion } from 'framer-motion'
-import { Button } from '@heroui/react'
-import { FiArrowUpRight, FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi'
-import { HiOutlineArchive } from 'react-icons/hi'
-import AnimatedText from './AnimatedText'
-import Image from "next/image"
+"use client";
+import logo from "../../public/lokman hossen portfolio.png";
+import { motion } from "framer-motion";
+import { Button } from "@heroui/react";
+import {
+  FiArrowUpRight,
+  FiGithub,
+  FiLinkedin,
+  FiTwitter,
+} from "react-icons/fi";
+
+import AnimatedText from "./AnimatedText";
+import Image from "next/image";
+import Link from "next/link";
+import { GrNotes } from "react-icons/gr";
 
 const socials = [
-  { icon: FiGithub, href: 'https://github.com/', label: 'GitHub' },
-  { icon: FiLinkedin, href: 'https://linkedin.com/', label: 'LinkedIn' },
-  { icon: FiTwitter, href: 'https://twitter.com/', label: 'Twitter' },
-]
+  { icon: FiGithub, href: "https://github.com/", label: "GitHub" },
+  { icon: FiLinkedin, href: "https://linkedin.com/", label: "LinkedIn" },
+  { icon: FiTwitter, href: "https://twitter.com/", label: "Twitter" },
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
   visible: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: 0.15 * i, ease: 'easeOut' },
+    transition: { duration: 0.5, delay: 0.15 * i, ease: "easeOut" },
   }),
-}
+};
 
 export default function Hero() {
   const scrollToSection = (id) => {
-    const element = document.getElementById(id)
+    const element = document.getElementById(id);
     if (element) {
-      const offset = 80
-      const bodyRect = document.body.getBoundingClientRect().top
-      const elementRect = element.getBoundingClientRect().top
-      const elementPosition = elementRect - bodyRect
-      const offsetPosition = elementPosition - offset
+      const offset = 80;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth',
-      })
+        behavior: "smooth",
+      });
     }
-  }
+  };
 
   return (
     <section
@@ -49,12 +56,11 @@ export default function Hero() {
       <div className="pointer-events-none absolute -bottom-32 -right-16 w-[24rem] h-[24rem] bg-fuchsia-400/10 dark:bg-fuchsia-700/10 blur-[120px] rounded-full" />
 
       <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-
         {/* IMAGE SIDE */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="order-1 md:order-2 flex justify-center"
         >
           <div className="relative group">
@@ -100,8 +106,8 @@ export default function Hero() {
             animate="visible"
             className="justify-center md:justify-start text-violet-600 dark:text-violet-400 uppercase tracking-[0.3em] text-[10px] font-bold mb-6 flex items-center gap-2"
           >
-            <span className="w-8 h-[1px] bg-violet-600 dark:bg-violet-400" />
-            I Build Fast & Modern Web Apps
+            <span className="w-8 h-[1px] bg-violet-600 dark:bg-violet-400" />I
+            Build Fast & Modern Web Apps
           </motion.p>
 
           <motion.h1
@@ -111,10 +117,15 @@ export default function Hero() {
             animate="visible"
             className="text-gray-900 dark:text-white text-5xl md:text-7xl font-black leading-tight tracking-tighter"
           >
-            Lokman Hossen<span className="text-violet-500">.</span>
+            Lokman Hossen
           </motion.h1>
 
-          <motion.div variants={fadeUp} custom={2} initial="hidden" animate="visible">
+          <motion.div
+            variants={fadeUp}
+            custom={2}
+            initial="hidden"
+            animate="visible"
+          >
             <AnimatedText />
           </motion.div>
 
@@ -125,7 +136,8 @@ export default function Hero() {
             animate="visible"
             className="text-gray-600 dark:text-gray-400 mt-6 max-w-lg text-lg leading-relaxed mx-auto md:mx-0"
           >
-            Crafting high-performance web experiences through clean code and intuitive design systems.
+            Crafting high-performance web experiences through clean code and
+            intuitive design systems.
           </motion.p>
 
           {/* ACTION BUTTONS */}
@@ -137,31 +149,25 @@ export default function Hero() {
             className="mt-10 flex flex-wrap justify-center md:justify-start gap-5"
           >
             <Button
-              onPress={() => scrollToSection('projects')}
+              onPress={() => scrollToSection("projects")}
               radius="full"
               size="lg"
               className="group bg-violet-600 hover:bg-violet-700 text-white px-8 font-bold text-sm shadow-lg shadow-violet-900/20"
-              endContent={
-                <FiArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              }
             >
-              View Work
+              View Work <FiArrowUpRight></FiArrowUpRight>
             </Button>
 
-            <Button
-              onPress={() => scrollToSection('contact')}
-              radius="full"
-              size="lg"
-              variant="bordered"
-              className="border-black/10 dark:border-white/10 text-gray-900 dark:text-white hover:bg-black/5 dark:hover:bg-white/5 px-8 font-bold text-sm"
-              endContent={<HiOutlineArchive className="text-violet-500 dark:text-violet-400" size={18} />}
+            <Link
+              href="https://drive.google.com/file/d/1I9QDlyNiXVeC4JUPbiwEvYPqaoY8EbJ_/view"
+              target="_blank"
+              className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-6 py-2.5 text-sm font-semibold text-neutral-800 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-neutral-50 hover:shadow-md dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-200 dark:hover:bg-neutral-900"
             >
-              Hire Me
-            </Button>
+              <span>View Resume</span>
+              <GrNotes className="text-base text-neutral-500 dark:text-neutral-400" />
+            </Link>
           </motion.div>
         </div>
-
       </div>
     </section>
-  )
+  );
 }

@@ -78,6 +78,7 @@ export default function Projects() {
           <Link
             href="https://github.com/lokman1313?tab=repositories"
             target="_blank"
+            rel="noopener noreferrer"
             className="p-2 rounded-full px-4 border-violet-500/40 text-violet-600 dark:text-violet-400 font-bold uppercase text-xs tracking-widest hover:bg-violet-500/10 flex justify-center items-center"
           >
             <span>View All Projects</span> <FiArrowRight />
@@ -94,15 +95,7 @@ export default function Projects() {
               whileInView="visible"
               viewport={{ once: true, margin: "-80px" }}
               variants={fadeUp}
-              className="group relative flex flex-col rounded-3xl overflow-hidden border transition-all duration-500
-    bg-gradient-to-b from-white via-white to-violet-50/40
-    dark:from-zinc-900 dark:via-zinc-900 dark:to-violet-950/30
-    border-zinc-200/70 dark:border-white/10
-    shadow-md shadow-zinc-200/50 dark:shadow-black/30
-    backdrop-blur-sm
-    hover:border-violet-500/40 dark:hover:border-violet-500/40
-    hover:shadow-xl hover:shadow-violet-500/10 dark:hover:shadow-violet-500/10
-    focus-within:ring-2 focus-within:ring-violet-500"
+              className="group relative flex flex-col rounded-3xl overflow-hidden border transition-all duration-500 bg-gradient-to-b from-white via-white to-violet-50/40dark:from-zinc-900 dark:via-zinc-900 dark:to-violet-950/30 border-zinc-200/70 dark:border-white/10 shadow-md shadow-zinc-200/50 dark:shadow-black/30 ackdrop-blur-sm hover:border-violet-500/40 dark:hover:border-violet-500/40 hover:shadow-xl hover:shadow-violet-500/10 dark:hover:shadow-violet-500/10 focus-within:ring-2 focus-within:ring-violet-500"
             >
               {project.featured && (
                 <span className="absolute top-4 left-4 z-10 text-[9px] font-bold tracking-widest uppercase text-white bg-violet-600 px-2.5 py-1 rounded-full">

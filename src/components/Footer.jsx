@@ -71,7 +71,7 @@ export default function Footer() {
 
         {/* Bottom Copyright */}
         <div className="mt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-widest text-slate-400 dark:text-slate-500 font-bold">
-          <p>© {currentYear} Lokman Hossen. All rights reserved.</p>
+          <p suppressHydrationWarning>© {currentYear} Lokman Hossen. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-violet-600 dark:hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-violet-600 dark:hover:text-white transition-colors">Terms of Service</a>
